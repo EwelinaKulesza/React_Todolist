@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Form = () => {
+const Form = ({ setInputText }) => {
     //Tu mogę wpisać kod java script i wrzucać funkcje
     const setInputTextHandler = (e) => {
-        console.log('Wpisałam tekst?!');  //loguje tu event
-
+        console.log(e.target.value);  //loguje tu event
+        setInputText(e.target.value);
     }
     return(
  <form>   
