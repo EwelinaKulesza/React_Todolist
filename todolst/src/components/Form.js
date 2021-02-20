@@ -11,10 +11,11 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
         setTodos([
             ...todos, {text: inputText, completed: false,id: Math.floor(Math.random()*100000)}
         ]);
+        setInputText("");
     }
     return(
  <form>   
-      <input onChange={setInputTextHandler} type="text"  className="todo-input"/>   {/**to miejsce gdzie wpisuję zadania */}
+      <input value={inputText} onChange={setInputTextHandler} type="text"  className="todo-input"/>   {/**to miejsce gdzie wpisuję zadania */}
      <button onClick={submitTodoHandler} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
      </button>
