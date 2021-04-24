@@ -96,7 +96,7 @@ form button:hover {
   opacity: 0.3;
 }
 
-/*CUSTOM SELECTOR */
+/*CUSTOM SELECTOR
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -106,7 +106,7 @@ select {
   box-shadow: none;
   border: 0 !important;
   background-image: none;
-}
+}*/
 
 /* Custom Select */
 .select {

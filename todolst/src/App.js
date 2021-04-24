@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 //Importowanie komponentow
 import Form from './components/Form';
 import TodoList from './components/TodoList';
+import './App.css';
 
 function App() {
 
@@ -13,13 +13,23 @@ function App() {
   const [filteredTodos, setFilteredTodos] = useState([]);
 
   //USE EFFECT
-  useEffect(() => {
+  /*useEffect(() => {
     // console.log('hey')
     filterHandler();
-  }, [todos, status])
+  }, [todos, status])*/
+
+  const statusHandler = (status) => {
+    setStatus(status)
+    filterHandler(status) 
+  }
+
+  const addTotodsHandler = (todos) => {
+    setTodos(todos);
+    filterHandler(status);
+  }
 
   //Functions
-  const filterHandler = () => {
+  const filterHandler = (status) => {
     switch(status){
       case "completed":
         setFilteredTodos(todos.filter(todo => todo.completed === true))
@@ -41,13 +51,13 @@ function App() {
       <Form 
         inputText={inputText} 
         todos={todos} 
-        setTodos={setTodos} 
+        setTodos={addTotodsHandler} 
         setInputText={setInputText}
-        setStatus={setStatus}
+        setStatus={statusHandler}
       />
       <TodoList 
         filteredTodos={filteredTodos} 
-        setTodos={setTodos} 
+        setTodos={addTotodsHandler} 
         todos={todos} 
       />
     </div>
