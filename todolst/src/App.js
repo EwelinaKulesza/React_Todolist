@@ -4,13 +4,28 @@ import Form from './components/Form';
 import TodoList from './components/TodoList';
 import './App.css';
 
+
+function useLocalStorageState(key, defaultValue) {
+  const [value, setValue] = React.useState(() => {
+    const valueFromLocalStorage = window.localStorage.getItem(key);
+    if (valueFromLocalStorage) {
+      return JSON.parse(valueFromLocalStorage);
+    }
+    return typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+  });
+  React.useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }, [value, key]);
+  return [value, setValue];
+}
+
 function App() {
 
   //State stuff
   const [inputText, setInputText] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useLocalStorageState("mykey", []);
   const [status, setStatus] = useState('all');
-  const [filteredTodos, setFilteredTodos] = useState([]);
+  const [filteredTodos, setFilteredTodos] = useLocalStorageState("secondkey", []);
 
   //USE EFFECT
   /*useEffect(() => {
@@ -27,6 +42,14 @@ function App() {
     setTodos(todos);
     filterHandler(status);
   }
+
+  React.useEffect(
+    () => {
+      const URL = 'https://jsonplaceholder.typicode.com/users/1/todos';
+      useFetch(URL).then(response => response.json()).then(items => console.log(items))
+    },
+    []
+  );
 
   //Functions
   const filterHandler = (status) => {
