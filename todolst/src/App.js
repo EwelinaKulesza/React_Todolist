@@ -43,13 +43,13 @@ function App() {
     filterHandler(status);
   }
 
-  React.useEffect(
-    () => {
-      const URL = 'https://jsonplaceholder.typicode.com/users/1/todos';
-      useFetch(URL).then(response => response.json()).then(items => console.log(items))
-    },
-    []
-  );
+  // React.useEffect(
+  //   () => {
+  //     const URL = 'https://jsonplaceholder.typicode.com/users/1/todos';
+  //     useFetch(URL).then(response => response.json()).then(items => console.log(items))
+  //   },
+  //   []
+  // );
 
   //Functions
   const filterHandler = (status) => {
