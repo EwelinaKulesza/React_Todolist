@@ -2,25 +2,34 @@ import React from "react";
 //Import Components
 import Todo from "./Todo";
 
-function useLocalStorageState(key, defaultValue) {
-  const [value, setValue] = React.useState(() => {
-    const valueInLocalStorge = window.localStorage.getItem(key);
-    if (valueInLocalStorge) {
-      return JSON.parse(valueInLocalStorge);
-    }
-    return typeof defaultValue == `function` ? defaultValue() : defaultValue;
-  });
+// function useLocalStorageState(key, defaultValue) {
+//   const [value, setValue] = React.useState(() => {
+//     const valueInLocalStorge = window.localStorage.getItem(key);
+//     if (valueInLocalStorge) {
+//       return JSON.parse(valueInLocalStorge);
+//     }
+//     return typeof defaultValue == `function` ? defaultValue() : defaultValue;
+//   });
 
-  React.useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
+//   React.useEffect(() => {
+//     window.localStorage.setItem(key, JSON.stringify(value));
+//   }, [key, value]);
 
-  return [value, setValue];
-}
+//   return [value, setValue];
+// }
 
-function TodoList() {
+
+
+
+
+
+
+
+
+
+function TodoList({filteredTodos, setTodos, todos}) {
 //const TodoList = ({ todos, setTodos, filteredTodos }) => {
-const [todos, setTodos, filteredTodos] = useLocalStorageState('todos', []);
+// const [todos, setTodos, filteredTodos] = useLocalStorageState('todos', []);
   return (
     <div className="todo-container">
       <ul className="todo-list">

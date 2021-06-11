@@ -2,11 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import LoginPage from "./components/LoginPage"
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { LoginProvider } from "./contexts/LoginContext"
+import ClickedToDo from "./components/ClickedToDo";
 
 ReactDOM.render(
+
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <LoginProvider>
+        <Switch>
+          <Route path="/ToDoList">
+            <App />
+          </Route>
+          <Route path="/ToDo/:id">
+            <ClickedToDo />
+          </Route>
+          <Route path="/">
+            <LoginPage />
+          </Route>
+        </Switch>
+      </LoginProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

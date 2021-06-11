@@ -3,7 +3,7 @@ import React from 'react';
 const Form = ({ setInputText, todos, setTodos, inputText, setStatus }) => {
     //Tu mogę wpisać kod java script i wrzucać funkcje
     const setInputTextHandler = (e) => {
-        console.log(e.target.value);  //loguje tu event
+        // console.log(e.target.value);  //loguje tu event
         setInputText(e.target.value);
     }
     const submitTodoHandler = (e) => {
