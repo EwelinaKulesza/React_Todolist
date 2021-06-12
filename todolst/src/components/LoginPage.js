@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { LoginContext } from "../contexts/LoginContext";
+import '../App.css';
 
 function LoginPage() {
     const [inputValue, setInputValue] = useState({ username: "", password: "" });
@@ -17,7 +18,7 @@ function LoginPage() {
             <br></br>
             <input value={inputValue.password} onChange={(e) => { setInputValue({ ...inputValue, password: e.target.value }) }} />
             <br></br>
-            <button onClick={() => { buttonFunction() }}>Login</button>
+            <button class = 'login-btn' onClick={() => { buttonFunction() }}>Login</button>
             <p>Any username and password with at least 3 characters is good enough.</p>
         </div>
     )
