@@ -8,7 +8,7 @@ import { LoginContext } from "./contexts/LoginContext";
 
 
 
-// Custom hook do fetchowania danych z serwera /Grzesiek
+// Custom hook do fetchowania danych z serwera
 function useFetch(path) {
   const [fetchedData, setFetchedData] = useState([]);
 
@@ -31,14 +31,14 @@ function App() {
   const { logged, signOut, todos, setTodos } = useContext(LoginContext);
   //State stuff
   const [inputText, setInputText] = useState("");
-  // Stan dodosów i funkcję useLocalStorage musiałem przenieść do kontekstu...
+  // Stan dodosów i funkcję useLocalStorage musiałam przenieść do kontekstu...
   // ...aby komponent ClickedToDo również miał dostęp, nie powinno się tak robić ogólnie...
-  // ...ale alternatywa to oddzielny kontekst ze stanem i wypadałoby tam zrobić reducera a w to się nie bawimy póki co
+  // ...ale alternatywa to oddzielny kontekst ze stanem i wypadałoby tam zrobić reducera jak będę miała czas
 
-  // Status i tak jest przekazywany jako target więc nie ma sensu trzymać go w stanie//   Grzesiek
+  // Status i tak jest przekazywany jako target więc niebędę trzymała go w stanie
   // const [status, setStatus] = useState('all');
 
-  // Nie ma potrzeby trzymać tego w storage skoro zawsze bazuje na todos//    Grzesiek
+  // Nie ma potrzeby trzymać tego w storage skoro zawsze bazuje na todos
   const [filteredTodos, setFilteredTodos] = useState(todos);
 
 
@@ -51,11 +51,11 @@ function App() {
     setFilteredTodos(newTodos);
   }
 
-  // Poniższe poza useEffectem bo nie można łączyć hooków w taki sposób ale pewnie można lepiej //Grzesiek
+  // Poniższe poza useEffectem bo nie można łączyć hooków w taki sposób zapewne można lepiej
   const URL = 'https://jsonplaceholder.typicode.com/users/1/todos';
   const fetchedData = useFetch(URL);
 
-  // Ta funkcja przekształca obiekt otrzymany fetchem na taki o tym samym formacie którego używamy /Grzesiek
+  // Ta funkcja przekształca obiekt otrzymany fetchem na taki o tym samym formacie którego używam
   const dataParser = (data) => (
     data.map((entry) => {
       return {
@@ -116,7 +116,7 @@ function App() {
         todos={todos}
       />
 
-      {/* // Styl można usunąć, dałem żebyście nie przeoczyli przycisku /Grzesiek */}
+      {/* // Styl można usunąć, dałam żeby nie zapomnieć o przycisku */}
       <button style={{ fontSize: "60px" }} onClick={() => { signOut() }}>Log out</button>
     </div>
   );
